@@ -1,3 +1,6 @@
+import { availableCell } from './helper.js';
+import { arr } from './gameMap.js';
+
 // create object class
 export default class Obstacles {
   constructor(name, image) {
@@ -7,8 +10,8 @@ export default class Obstacles {
 
   // set obstacles on the grid
   setObstaclePosition() {
-    for (i = 0; i < 10; i++) {
-      cell = availableCell();
+    for (let i = 0; i < 10; i++) {
+      let cell = availableCell();
       arr[cell] = this.name;
       const obstacleBox = document.getElementById(cell);
       obstacleBox.classList.add(this.name);

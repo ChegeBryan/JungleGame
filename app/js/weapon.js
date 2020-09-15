@@ -1,6 +1,7 @@
-import availableCell from './helper.js'
+import { availableCell } from './helper.js';
+import { arr } from './gameMap.js';
 // weapon class
-export class Weapons {
+export default class Weapons {
   constructor(name, image, damage) {
     this.name = name;
     this.image = image;
@@ -9,7 +10,7 @@ export class Weapons {
 
   // set weapons on the the grid
   setWeaponposition() {
-    cell = availableCell();
+    let cell = availableCell();
     arr[cell] = this.name;
     const weaponBox = document.getElementById(cell);
     weaponBox.classList.add(this.name);

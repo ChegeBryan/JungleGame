@@ -1,14 +1,15 @@
+import { arr } from './gameMap.js';
 // findAvailableCell
-export const availableCell= () => {
+export let availableCell = () => {
+  let acell;
   do {
-    cell = Math.floor(Math.random() * 100);
-  } while (cell in arr);
-
-  return cell;
-}
+    acell = Math.floor(Math.random() * 100);
+  } while (acell in arr);
+  return acell;
+};
 
 // check if weapon in the player position
-export const searchWeapon=(searchWeaponFrom, searchWeaponTo)=> {
+export const searchWeapon = (searchWeaponFrom, searchWeaponTo) => {
   const searchDiff = searchWeaponTo - searchWeaponFrom;
   const movedToBoxes = [];
   if (searchDiff > 0) {
@@ -16,14 +17,12 @@ export const searchWeapon=(searchWeaponFrom, searchWeaponTo)=> {
       for (var i = searchWeaponFrom; i <= searchWeaponTo; i++) {
         if (jQuery.inArray(i, rangeX) >= 0) {
           movedToBoxes.push(i);
-
         }
       }
     } else {
       for (var i = searchWeaponFrom; i <= searchWeaponTo; i += 10) {
         if (jQuery.inArray(i, rangeY) >= 0) {
           movedToBoxes.push(i);
-
         }
       }
     }
@@ -70,4 +69,4 @@ export const searchWeapon=(searchWeaponFrom, searchWeaponTo)=> {
       $(`#${activePlayer.name}weapons`).text(activePlayer.Weapons);
     }
   }
-}
+};

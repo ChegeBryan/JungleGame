@@ -1,16 +1,18 @@
-import {availableCell,searchWeapon} from './helper.js'
+import { availableCell, searchWeapon } from './helper.js';
+import { arr, activePlayer, passivePlayer } from './gameMap.js';
 // player class
-class Player {
+export default class Player {
   constructor(name, image) {
     this.name = name;
     this.image = image;
     this.lifePoints = 100;
     this.damage = 10;
+    this.active = false;
   }
 
   // place the player on the grid method
   setPlayerPosition() {
-    cell = availableCell();
+    let cell = availableCell();
     arr[cell] = this.name;
     const playerBox = document.getElementById(cell);
     playerBox.classList.add(this.name);
@@ -20,9 +22,10 @@ class Player {
     // fill adjacent cells to the player with with values to indicate not empty
     // This disallows the cells from being occupied by a another player
     adjacents.forEach((adjacent) => {
-      if (adjacent >= 0 && adjacent < 100 && !(adjacent in arr)) arr[adjacent] = 'full';
+      if (adjacent >= 0 && adjacent < 100 && !(adjacent in arr))
+        arr[adjacent] = 'full';
     });
-    return this.position = cell;
+    return (this.position = cell);
   }
 
   // create valid movement range
@@ -37,7 +40,7 @@ class Player {
     let right = playerPosition + 1;
     let left = playerPosition - 1;
     let blocked = false;
-    const xMin = playerPosition - playerPosition % width;
+    const xMin = playerPosition - (playerPosition % width);
     const xMax = xMin + 9;
 
     while (up >= 0 && up >= playerPosition - 30) {
@@ -115,12 +118,13 @@ class Player {
   // activate  player
   activatePlayer() {
     if (this.name === 'player1') {
-      activePlayer = player1;
-      passivePlayer = player2;
-    } else {
-      activePlayer = player2;
-      passivePlayer = player1;
+      this.active = true;
+      //let passivePlayer = player2;
     }
+    // else {
+    //   //let activePlayer = player2;
+    //   //let passivePlayer = player;
+    // }
 
     if (fight === false) {
       activePlayer.setMovementRange(this.position);
@@ -140,7 +144,7 @@ class Player {
     rangeY.splice(targetPosition, 1);
 
     if (targetPosition == this.position) {
-      return arr[targetPosition] = 'full';
+      return (arr[targetPosition] = 'full');
     }
     arr[targetPosition] = this.name;
 
@@ -155,7 +159,12 @@ class Player {
     searchWeapon(searchWeaponFrom, searchWeaponTo);
 
     this.position = targetPosition;
-    adjacentCells = [targetPosition - 1, targetPosition + 1, targetPosition - 10, targetPosition + 10];
+    adjacentCells = [
+      targetPosition - 1,
+      targetPosition + 1,
+      targetPosition - 10,
+      targetPosition + 10,
+    ];
 
     switch (this.name) {
       case 'player1':
@@ -179,7 +188,7 @@ class Player {
     if (fight === false) {
       passivePlayer.activatePlayer();
     } else {
-    // fight
+      // fight
       rangeX = [];
       rangeY = [];
       $('div#map > div').removeClass('range');
@@ -187,47 +196,3 @@ class Player {
     }
   }
 }
-
-
-// instantiate obstacles
-const obstacle = new Obstacles('obstacle', 'obstacle.png');
-// instantiate players
-const player1 = new Player('player1', 'merida.png');
-const player2 = new Player('player2', 'zelda.png');
-// instantiate the objects
-const sword = new Weapons('sword', 'sword.png', 18);
-const gun = new Weapons('gun', 'gun.png', 15);
-const bow = new Weapons('bow', 'bow.png', 14);
-const dagger = new Weapons('dagger', 'dagger.png', 12);
-// call the position method
-sword.setWeaponposition();
-dagger.setWeaponposition();
-gun.setWeaponposition();
-bow.setWeaponposition();
-player1.setPlayerPosition();
-player2.setPlayerPosition();
-obstacle.setObstaclePosition();
-player1.activatePlayer();
-
-
-// On mouse hover show player image moving over to the hovered over box
-const box = $('div#map> div');
-box.hover(function () {
-  const targetPosition = parseInt(this.id);
-  if (jQuery.inArray(parseInt(this.id), rangeX) >= 0 || jQuery.inArray(parseInt(this.id), rangeY) >= 0) {
-    $(this).addClass(`${window.activePlayer.name}Moving`);
-  } // hover method has two functions mouse leave and mouse enter
-}, function () {
-  $(this).removeClass(`${window.activePlayer.name}Moving`);
-});
-
-// onclick the player moves to the clicked box
-box.on('click', function () {
-  const targetPosition = parseInt(this.id);
-  if (jQuery.inArray(targetPosition, rangeX) >= 0 || jQuery.inArray(targetPosition, rangeY) >= 0) {
-    box.removeClass(`${window.activePlayer.name}Moving`);
-    activePlayer.movement(targetPosition);
-  }
-});
-
-

@@ -1,267 +1,268 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Jungle game</title>
-        <link rel="stylesheet" href="./css/style.css">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-                crossorigin="anonymous">
-</head>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jungle game</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          crossorigin="anonymous">
+  </head>
 
 
-<body>
-        <!-- section game title -->
+  <body>
+    <!-- section game title -->
+    <section>
+      <h4 class="display-4 text-center header text-white">Jungle Game</h4>
+      <button type="button" class="btn btn-dark ml-3" data-toggle="modal" data-target="#exampleModal">
+        game rules
+      </button>
+
+      <input TYPE="button" class="btn btn-success" onClick="history.go(0)" VALUE="Restart">
+    </section>
+
+    <!-- player Dashboard -->
+    <section>
+      <div class="row  ">
+        <!-- player 1 dashboard -->
         <section>
-                <h4 class="display-4 text-center header text-white">Jungle Game</h4>
-                <button type="button" class="btn btn-dark ml-3" data-toggle="modal" data-target="#exampleModal">
-                        game rules
-                </button>
 
-                <input TYPE="button" class="btn btn-success" onClick="history.go(0)" VALUE="Restart">
-        </section>
+          <div class="container p-3">
+            <div class="col md-3 sm-3">
+              <div class="card bg-dark text-white " style="width:18rem;">
+                <h4 class=" text-center">Merida</h4>
+                <img src="./image/merida.png" class="card-img-top player-image"
+                     height="400px" alt="...">
+                <div class="card-body">
+                  <div class="row">
+                    <div id="player1weapons" class="col md-6 sm-6">
+                    </div>
+                    <div id="player1WeaponImage"
+                         class="col md-6 sm-6">
 
-        <!-- player Dashboard -->
-        <section>
-                <div class="row  ">
-                        <!-- player 1 dashboard -->
-                        <section>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col md-6 sm-6">
 
-                                <div class="container p-3">
-                                        <div class="col md-3 sm-3">
-                                                <div class="card bg-dark text-white " style="width:18rem;">
-                                                        <h4 class=" text-center">Merida</h4>
-                                                        <img src="./image/merida.png" class="card-img-top player-image"
-                                                                height="400px" alt="...">
-                                                        <div class="card-body">
-                                                                <div class="row">
-                                                                        <div id="player1weapons" class="col md-6 sm-6">
-                                                                        </div>
-                                                                        <div id="player1WeaponImage"
-                                                                                class="col md-6 sm-6">
+                      <p>Life Points</p>
+                      <h5 id="player1lifePoints"
+                          class="minicircle text-dark text-center">
+                        100</h5>
+                    </div>
+                    <div class="col md-6 sm-6">
+                      <p>Damage</p>
 
-                                                                        </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                        <div class="col md-6 sm-6">
+                      <h5 id="player1damage"
+                          class="minicircle-damage text-dark text-center">
+                        10</h5>
 
-                                                                                <p>Life Points</p>
-                                                                                <h5 id="player1lifePoints"
-                                                                                        class="minicircle text-dark text-center">
-                                                                                        100</h5>
-                                                                        </div>
-                                                                        <div class="col md-6 sm-6">
-                                                                                <p>Damage</p>
-
-                                                                                <h5 id="player1damage"
-                                                                                        class="minicircle-damage text-dark text-center">
-                                                                                        10</h5>
-
-                                                                        </div>
-                                                                </div>
-
-                                                        </div>
-                                                        <div class="container mb-3">
-                                                                <div class="row">
-                                                                        <div class="col md-6 sm-6">
-                                                                                <button type="button"
-                                                                                        id='player1AttackBtn'
-                                                                                        class="btn btn-danger btn-lg"
-                                                                                        disabled
-                                                                                        onclick="attack()">Attack</button>
-
-                                                                        </div>
-                                                                        <div class="col md-6 sm-6">
-                                                                                <button type="button"
-                                                                                        id="player1DefendBtn"
-                                                                                        class="btn btn-success btn-lg"
-                                                                                        disabled
-                                                                                        onclick="defend()">Defend</button>
-                                                                        </div>
-                                                                </div>
-                                                        </div>
-                                                </div>
-                                        </div>
-                                </div>
-                        </section>
-                        <!-- game map -->
-                        <div class="col md-6 sm-6 map mt-2">
-                                <div id="map" class="mt-1"></div>
-                        </div>
-                        <!-- player 2 dashboard -->
-                        <section>
-                                <div class="container p-2">
-                                        <div class="col md-3 sm-3">
-                                                <div class="card bg-dark text-white " style="width: 18rem;">
-                                                        <h4 class=" text-center">Zelda</h4>
-                                                        <img src="./image/zelda.png" class="card-img-top player-image"
-                                                                alt="...">
-                                                        <div class="card-body">
-                                                                <div class="row">
-                                                                        <div id="player2weapons" class="col md-6 sm-6">
-                                                                        </div>
-                                                                        <div id="player2WeaponImage"
-                                                                                class=" col md-6 sm-6"></div>
-                                                                </div>
-                                                                <div class="row">
-                                                                        <div class="col md-6 sm-6">
-
-                                                                                <p>Life Points</p>
-                                                                                <h5 id="player2lifePoints"
-                                                                                        class="minicircle text-dark text-center">
-                                                                                        100</h5>
-                                                                        </div>
-                                                                        <div class="col md-6 sm-6 ">
-                                                                                <p>Damage</p>
-
-                                                                                <h5 id="player2damage"
-                                                                                        class="minicircle-damage text-dark text-center">
-                                                                                        10</h5>
-
-                                                                        </div>
-                                                                </div>
-
-                                                        </div>
-                                                        <div class="container mb-3">
-                                                                <div class="row">
-                                                                        <div class="col md-6 sm-6">
-                                                                                <button type="button"
-                                                                                        id='player2AttackBtn'
-                                                                                        class="btn btn-danger btn-lg"
-                                                                                        disabled
-                                                                                        onclick="attack()">Attack</button>
-
-                                                                        </div>
-                                                                        <div class="col md-6 sm-6">
-                                                                                <button type="button"
-                                                                                        id="player2DefendBtn"
-                                                                                        class="btn btn-success btn-lg"
-                                                                                        disabled
-                                                                                        onclick="defend()">Defend</button>
-                                                                        </div>
-                                                                </div>
-                                                        </div>
-                                                </div>
-                                        </div>
-                                </div>
-                        </section>
+                    </div>
+                  </div>
 
                 </div>
-        </section>
-        <!-- winner modal section -->
+                <div class="container mb-3">
+                  <div class="row">
+                    <div class="col md-6 sm-6">
+                      <button type="button"
+                              id='player1AttackBtn'
+                              class="btn btn-danger btn-lg"
+                              disabled
+                              onclick="attack()">Attack</button>
 
-        <section>
-                <div class="modal fade " id="exampleModal2" tabindex="-1" role="dialog"
-                        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                                <div class="modal-content">
-                                        <div class="modal-header text-center">
-                                                <h5 class="modal-title  " id="exampleModalLongTitle">Game over</h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                        aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                </button>
-                                        </div>
-                                        <!-- Modal body -->
-                                        <div class="modal-body">
-
-                                                <h3 class="text-center">The winner is</h3>
-                                                <h3 class="text-center"><img src="" class="center" width="250"
-                                                                id="winner"></img></p>
-                                                        <h3 class="text-center"></h3>
-                                        </div>
-                                        <div class="modal-footer">
-                                                <button type="button" class="btn btn-danger"
-                                                        data-dismiss="modal">close</button>
-
-                                        </div>
-                                </div>
-                        </div>
+                    </div>
+                    <div class="col md-6 sm-6">
+                      <button type="button"
+                              id="player1DefendBtn"
+                              class="btn btn-success btn-lg"
+                              disabled
+                              onclick="defend()">Defend</button>
+                    </div>
+                  </div>
                 </div>
+              </div>
+            </div>
+          </div>
         </section>
-        <!-- game rules modal section -->
+        <!-- game map -->
+        <div class="col md-6 sm-6 map mt-2">
+          <div id="map" class="mt-1"></div>
+        </div>
+        <!-- player 2 dashboard -->
         <section>
-                <div class="modal fade   " id="exampleModal" tabindex="-1" role="dialog"
-                        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="container p-2">
+            <div class="col md-3 sm-3">
+              <div class="card bg-dark text-white " style="width: 18rem;">
+                <h4 class=" text-center">Zelda</h4>
+                <img src="./image/zelda.png" class="card-img-top player-image"
+                     alt="...">
+                <div class="card-body">
+                  <div class="row">
+                    <div id="player2weapons" class="col md-6 sm-6">
+                    </div>
+                    <div id="player2WeaponImage"
+                         class=" col md-6 sm-6"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col md-6 sm-6">
 
-                        <div class="modal-dialog   modal-dialog-centered modal-xl" role="document">
-                                <div class="modal-content bg-dark text-white text-center ">
-                                        <div class="modal-header text-center">
-                                                <h5 class="modal-title  text-center " id="exampleModalLongTitle">Game
-                                                        Rules</h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                        aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                </button>
-                                        </div>
-                                        <div class="modal-body">
-                                                <div>
-                                                        <h3>Weapons</h3>
-                                                        <p>The default weapon inflicts 10 points</p>
-                                                        <p>Each weapon inflicts a certain number of damage</p>
-                                                </div>
-                                                <div>
-                                                        <h3>Movement</h3>
-                                                        <p>For each turn, a player can move from one to three boxes
-                                                                (horizontally or vertically)
-                                                                before ending their turn.</p>
-                                                        <p> a player cannot move past an obstacle</p>
-                                                        <p>If a player passes over a box containing a weapon, they leave
-                                                                their
-                                                                current
-                                                                weapon on site and replace it with the new one.</p>
-                                                </div>
-                                                <div>
-                                                        <h3>Fight</h3>
-                                                        <p>If players cross over adjacent squares (horizontally or
-                                                                vertically),
-                                                                a battle begins.
-                                                        </p>
-                                                        <p>Each player attacks in turn</p>
-                                                        <p>The player can choose to attack or defend against the next
-                                                                shot</p>
-                                                        <p>If the player chooses to defend themselves, they sustain 50%
-                                                                less
-                                                                damage than normal
-                                                        </p>
-                                                        <p>As soon as the life points of a player (initially 100) falls
-                                                                to 0,
-                                                                they lose. A message
-                                                                appears and the game is over</p>
-                                                </div>
+                      <p>Life Points</p>
+                      <h5 id="player2lifePoints"
+                          class="minicircle text-dark text-center">
+                        100</h5>
+                    </div>
+                    <div class="col md-6 sm-6 ">
+                      <p>Damage</p>
 
-                                        </div>
-                                        <div class="modal-footer">
-                                                <button type="button" class="btn btn-success"
-                                                        data-dismiss="modal">understood</button>
+                      <h5 id="player2damage"
+                          class="minicircle-damage text-dark text-center">
+                        10</h5>
 
-                                        </div>
-                                </div>
-                        </div>
+                    </div>
+                  </div>
+
                 </div>
+                <div class="container mb-3">
+                  <div class="row">
+                    <div class="col md-6 sm-6">
+                      <button type="button"
+                              id='player2AttackBtn'
+                              class="btn btn-danger btn-lg"
+                              disabled
+                              onclick="attack()">Attack</button>
 
+                    </div>
+                    <div class="col md-6 sm-6">
+                      <button type="button"
+                              id="player2DefendBtn"
+                              class="btn btn-success btn-lg"
+                              disabled
+                              onclick="defend()">Defend</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
 
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-                integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-                crossorigin="anonymous">
-        </script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-                integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-                crossorigin="anonymous">
-        </script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-                integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-                crossorigin="anonymous">
-        </script>
-        <script type="module" src="./js/helper.js"></script>
-        <script type="module" src="./js/gameMap.js"></script>
-        <script type="module" src="./js/Weapon.js"></script>
-        <script type="module" src="./js/player.js"></script>
-        <script type="module" src="./js/fight.js"></script>
+      </div>
+    </section>
+    <!-- winner modal section -->
+
+    <section>
+      <div class="modal fade " id="exampleModal2" tabindex="-1" role="dialog"
+           aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header text-center">
+              <h5 class="modal-title  " id="exampleModalLongTitle">Game over</h5>
+              <button type="button" class="close" data-dismiss="modal"
+                      aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+
+              <h3 class="text-center">The winner is</h3>
+              <h3 class="text-center"><img src="" class="center" width="250"
+                     id="winner"></img></p>
+                <h3 class="text-center"></h3>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger"
+                      data-dismiss="modal">close</button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- game rules modal section -->
+    <section>
+      <div class="modal fade   " id="exampleModal" tabindex="-1" role="dialog"
+           aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+
+        <div class="modal-dialog   modal-dialog-centered modal-xl" role="document">
+          <div class="modal-content bg-dark text-white text-center ">
+            <div class="modal-header text-center">
+              <h5 class="modal-title  text-center " id="exampleModalLongTitle">Game
+                Rules</h5>
+              <button type="button" class="close" data-dismiss="modal"
+                      aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div>
+                <h3>Weapons</h3>
+                <p>The default weapon inflicts 10 points</p>
+                <p>Each weapon inflicts a certain number of damage</p>
+              </div>
+              <div>
+                <h3>Movement</h3>
+                <p>For each turn, a player can move from one to three boxes
+                  (horizontally or vertically)
+                  before ending their turn.</p>
+                <p> a player cannot move past an obstacle</p>
+                <p>If a player passes over a box containing a weapon, they leave
+                  their
+                  current
+                  weapon on site and replace it with the new one.</p>
+              </div>
+              <div>
+                <h3>Fight</h3>
+                <p>If players cross over adjacent squares (horizontally or
+                  vertically),
+                  a battle begins.
+                </p>
+                <p>Each player attacks in turn</p>
+                <p>The player can choose to attack or defend against the next
+                  shot</p>
+                <p>If the player chooses to defend themselves, they sustain 50%
+                  less
+                  damage than normal
+                </p>
+                <p>As soon as the life points of a player (initially 100) falls
+                  to 0,
+                  they lose. A message
+                  appears and the game is over</p>
+              </div>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-success"
+                      data-dismiss="modal">understood</button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+            crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+            integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+            crossorigin="anonymous">
+    </script>
+    <script type="module" src="./js/gameMap.js"></script>
+    <script type="module" src="./js/helper.js"></script>
+    <script type="module" src="./js/weaponController.js"></script>
+    <script type="module" src="./js/playerController.js"></script>
+    <script type="module" src="./js/obstacleController.js"></script>
+    <script type="module" src="./js/fight.js"></script>
 
 
-</body>
+  </body>
 
 </html>
